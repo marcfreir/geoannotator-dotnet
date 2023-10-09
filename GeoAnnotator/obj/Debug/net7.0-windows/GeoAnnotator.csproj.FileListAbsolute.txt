@@ -1,0 +1,15 @@
+E:\UNIPAMPA\GEOFISICA\8sem\GEOANNOTATOR_DOTNET\GeoAnnotator\bin\Debug\net7.0-windows\GeoAnnotator.exe
+E:\UNIPAMPA\GEOFISICA\8sem\GEOANNOTATOR_DOTNET\GeoAnnotator\bin\Debug\net7.0-windows\GeoAnnotator.deps.json
+E:\UNIPAMPA\GEOFISICA\8sem\GEOANNOTATOR_DOTNET\GeoAnnotator\bin\Debug\net7.0-windows\GeoAnnotator.runtimeconfig.json
+E:\UNIPAMPA\GEOFISICA\8sem\GEOANNOTATOR_DOTNET\GeoAnnotator\bin\Debug\net7.0-windows\GeoAnnotator.dll
+E:\UNIPAMPA\GEOFISICA\8sem\GEOANNOTATOR_DOTNET\GeoAnnotator\bin\Debug\net7.0-windows\GeoAnnotator.pdb
+E:\UNIPAMPA\GEOFISICA\8sem\GEOANNOTATOR_DOTNET\GeoAnnotator\obj\Debug\net7.0-windows\GeoAnnotator.csproj.AssemblyReference.cache
+E:\UNIPAMPA\GEOFISICA\8sem\GEOANNOTATOR_DOTNET\GeoAnnotator\obj\Debug\net7.0-windows\GeoAnnotator.GeneratedMSBuildEditorConfig.editorconfig
+E:\UNIPAMPA\GEOFISICA\8sem\GEOANNOTATOR_DOTNET\GeoAnnotator\obj\Debug\net7.0-windows\GeoAnnotator.AssemblyInfoInputs.cache
+E:\UNIPAMPA\GEOFISICA\8sem\GEOANNOTATOR_DOTNET\GeoAnnotator\obj\Debug\net7.0-windows\GeoAnnotator.AssemblyInfo.cs
+E:\UNIPAMPA\GEOFISICA\8sem\GEOANNOTATOR_DOTNET\GeoAnnotator\obj\Debug\net7.0-windows\GeoAnnotator.csproj.CoreCompileInputs.cache
+E:\UNIPAMPA\GEOFISICA\8sem\GEOANNOTATOR_DOTNET\GeoAnnotator\obj\Debug\net7.0-windows\GeoAnnotator.dll
+E:\UNIPAMPA\GEOFISICA\8sem\GEOANNOTATOR_DOTNET\GeoAnnotator\obj\Debug\net7.0-windows\refint\GeoAnnotator.dll
+E:\UNIPAMPA\GEOFISICA\8sem\GEOANNOTATOR_DOTNET\GeoAnnotator\obj\Debug\net7.0-windows\GeoAnnotator.pdb
+E:\UNIPAMPA\GEOFISICA\8sem\GEOANNOTATOR_DOTNET\GeoAnnotator\obj\Debug\net7.0-windows\GeoAnnotator.genruntimeconfig.cache
+E:\UNIPAMPA\GEOFISICA\8sem\GEOANNOTATOR_DOTNET\GeoAnnotator\obj\Debug\net7.0-windows\ref\GeoAnnotator.dll

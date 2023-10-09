@@ -1,0 +1,48 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace GeoAnnotator
+{
+    public partial class ImageForm : Form
+    {
+        private Bitmap image;
+        //private Point startPoint;
+        //private Point endPoint;
+        //private bool isDrawing;
+
+        public ImageForm(Bitmap image)
+        {
+            InitializeComponent();
+            this.image = image;
+            pictureBox.Image = image;
+            //isDrawing = false;
+            InitializeDrawingPanel();
+        }
+
+        private void InitializeDrawingPanel()
+        {
+            // Create a PictureBox or Panel for drawing polygons
+            // Attach event handlers for mouse down, mouse move, and mouse up
+            // Implement drawing logic using GDI+ or another drawing library
+        }
+
+        // Event handler for mouse down on the drawing panel
+        private void DrawingPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Handle mouse down to start drawing
+        }
+
+        // Event handler for mouse move on the drawing panel
+        private void DrawingPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            // Handle mouse move to update the drawing
+        }
+
+        // Event handler for mouse up on the drawing panel
+        private void DrawingPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            // Handle mouse up to finish drawing
+        }
+    }
+}
