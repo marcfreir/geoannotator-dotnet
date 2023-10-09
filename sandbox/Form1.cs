@@ -12,39 +12,37 @@ namespace GeoAnnotator
 
         private readonly Button previousButton;
         private readonly Button nextButton;
-        private readonly Button chooseButton;
+
+        private readonly Button chooseButton; // Add a "Choose" button
 
         public Form1()
         {
             InitializeComponent();
 
-            previousButton = new Button
-            {
-                Text = "Previous",
-                Location = new Point(10, 30)
-            };
-            previousButton.Click += PreviousButton_Click;
+            // Create "Previous" Button
+            previousButton = new Button();
+            previousButton.Text = "Previous";
+            previousButton.Location = new Point(10, 30); // Set the button's location
+            previousButton.Click += PreviousButton_Click; // Attach event handler
             Controls.Add(previousButton);
 
-            nextButton = new Button
-            {
-                Text = "Next",
-                Location = new Point(100, 30)
-            };
-            nextButton.Click += NextButton_Click;
+            // Create "Next" Button
+            nextButton = new Button();
+            nextButton.Text = "Next";
+            nextButton.Location = new Point(100, 30); // Set the button's location
+            nextButton.Click += NextButton_Click; // Attach event handler
             Controls.Add(nextButton);
 
-            chooseButton = new Button
-            {
-                Text = "Choose",
-                Location = new Point(200, 30)
-            };
-            chooseButton.Click += ChooseButton_Click;
+            // Create "Choose" Button
+            chooseButton = new Button();
+            chooseButton.Text = "Choose";
+            chooseButton.Location = new Point(200, 30); // Set the button's location
+            chooseButton.Click += ChooseButton_Click; // Attach event handler
             Controls.Add(chooseButton);
 
             // Create a MenuStrip
             MenuStrip menuStrip = new MenuStrip();
-            this.MainMenuStrip = menuStrip;  // Set the MenuStrip as the form's menu
+            this.MainMenuStrip = menuStrip;
             Controls.Add(menuStrip);
 
             // Create a "File" menu
@@ -64,6 +62,11 @@ namespace GeoAnnotator
 
             // Subscribe to the "Click" event of the "Exit" item
             exitMenuItem.Click += ExitMenuItem_Click;
+
+            // Create an instance of your custom form (FreeSelectTool)
+            //FreeSelectTool freeSelectTool = new FreeSelectTool();
+            // Optionally, you can show your custom form
+            //freeSelectTool.Show();
         }
 
         // Event handler for the "Exit" menu item
@@ -135,18 +138,47 @@ namespace GeoAnnotator
 
         private void ChooseButton_Click(object? sender, EventArgs e)
         {
+            // Check if there is a current image to open
             if (currentIndex >= 0 && currentIndex < imageFiles.Length)
             {
-                using (var freeSelectTool = new FreeSelectTool(imageFiles[currentIndex], pictureBox.Image as Bitmap))
+                // Create and show a new instance of ImageForm with the current image
+                using (var imageForm = new ImageForm(imageFiles[currentIndex]))
                 {
-                    if (freeSelectTool.ShowDialog() == DialogResult.OK)
-                    {
-                        pictureBox.Image = freeSelectTool.ModifiedImage;
-                    }
+                    imageForm.ShowDialog();
+                }
+
+                // Create and show a new instance of FreeSelectTool with the current image path
+                //using (var freeSelectTool = new FreeSelectTool(imageFiles[currentIndex], pictureBox.Image as Bitmap))
+                //{
+                    //if (freeSelectTool.ShowDialog() == DialogResult.OK)
+                    //{
+                        /* // Get the modified image from the FreeSelectTool form and update the PictureBox
+                        pictureBox.Image = freeSelectTool.ModifiedImage; */
+
+                        /* // Get the modified image from the FreeSelectTool form
+                        Bitmap modifiedImage = freeSelectTool.ModifiedImage;
+
+                        // Update the PictureBox with the modified image
+                        pictureBox.Image = modifiedImage; */
+                    //}
+                //}
+                // Create an instance of FreeSelectTool
+                FreeSelectTool freeSelectTool = new FreeSelectTool();
+
+                // Set the image path and initial canvas for the FreeSelectTool form
+                freeSelectTool.ImagePath = imageFiles[currentIndex];
+                //freeSelectTool.InitialCanvas = pictureBox.Image as Bitmap;
+                
+                // Load the chosen image and set it as the initial canvas for FreeSelectTool
+                freeSelectTool.InitialCanvas = new Bitmap(imageFiles[currentIndex]);
+
+                // Show the FreeSelectTool form
+                if (freeSelectTool.ShowDialog() == DialogResult.OK)
+                {
+                    // Get the modified image from the FreeSelectTool form and update the PictureBox
+                    pictureBox.Image = freeSelectTool.ModifiedImage;
                 }
             }
         }
-
-        // ... (your other methods for opening and navigating images)
     }
 }

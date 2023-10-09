@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace GeoAnnotator
@@ -8,11 +9,14 @@ namespace GeoAnnotator
     {
         private readonly PictureBox pictureBox;
         private readonly string imagePath;
+        private Bitmap canvas;
 
         public ImageForm(string imagePath)
         {
             InitializeComponent();
             this.imagePath = imagePath;
+            // Initialize the canvas field with a new Bitmap instance
+            canvas = new Bitmap(1, 1); // You can set the initial size according to your requirements
 
             // Set the WindowState to Maximized for full-screen mode
             this.WindowState = FormWindowState.Maximized;
@@ -21,24 +25,10 @@ namespace GeoAnnotator
             pictureBox = new PictureBox();
             pictureBox.Dock = DockStyle.Fill;
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox.MouseDown += PictureBox_MouseDown;
+            pictureBox.MouseMove += PictureBox_MouseMove;
+            pictureBox.MouseUp += PictureBox_MouseUp;
             Controls.Add(pictureBox);
-
-            // Load the image
-            if (File.Exists(imagePath))
-            {
-                pictureBox.Image = new Bitmap(imagePath);
-            }
-            else
-            {
-                MessageBox.Show("Image file not found.");
-            }
-
-            // Create "Close" Button
-            var closeButton = new Button();
-            closeButton.Text = "Close";
-            closeButton.Dock = DockStyle.Bottom;
-            closeButton.Click += CloseButton_Click;
-            Controls.Add(closeButton);
 
             // Load and display the image
             LoadImage();
@@ -48,8 +38,9 @@ namespace GeoAnnotator
         {
             try
             {
-                var image = Image.FromFile(imagePath);
-                pictureBox.Image = image;
+                // Load the image from file
+                canvas = new Bitmap(imagePath);
+                pictureBox.Image = canvas;
             }
             catch (Exception ex)
             {
@@ -58,9 +49,32 @@ namespace GeoAnnotator
             }
         }
 
-        private void CloseButton_Click(object? sender, EventArgs e)
+        // Drawing logic
+        private bool isDrawing = false;
+        private Point lastPoint;
+
+        private void PictureBox_MouseDown(object? sender, MouseEventArgs e)
         {
-            Close();
+            isDrawing = true;
+            lastPoint = e.Location;
+        }
+
+        private void PictureBox_MouseMove(object? sender, MouseEventArgs e)
+        {
+            if (isDrawing)
+            {
+                using (Graphics g = Graphics.FromImage(canvas))
+                {
+                    g.DrawLine(Pens.Black, lastPoint, e.Location);
+                    lastPoint = e.Location;
+                    pictureBox.Invalidate();
+                }
+            }
+        }
+
+        private void PictureBox_MouseUp(object? sender, MouseEventArgs e)
+        {
+            isDrawing = false;
         }
     }
 }
